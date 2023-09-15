@@ -30,13 +30,28 @@ function closeModal() {
 }
 
 // onsubmit="return validate();" demande l'appel de la fonction validate pour valider les donnée
-function validate(firstName, lastName, email, birthdate, quantity, location){
-  console.log(firstName)
-  console.log(lastName)
-  console.log(email)
-  console.log(birthdate)
-  console.log(quantity)
-  console.log(location)
+function validate(){
+/*- document, un objet javascript qui permet d'atteindre la page html
+  charger dans un navigateur web.
+  - forms séléctionne tout les élément <form> de la page
+  - reserve séléctionne le formulaire nommer reserve,
+  qui est celui sur lequel on souhaite travailler.
+*/  
+  const firstName = document.forms.reserve.first.value;
+  const lastName = document.forms.reserve.last.value;
+  const email = document.forms.reserve.email.value;
+  const birthdate = document.forms.reserve.birthdate.value;
+  const quantity = document.forms.reserve.quantity.value;
+  const location = document.forms.reserve.location.value;
+
+  // Log the data sent by the form
+  console.log("First Name:", firstName);
+  console.log("Last Name:", lastName);
+  console.log("Email:", email);
+  console.log("Birthdate:", birthdate);
+  console.log("Quantity:", quantity);
+  console.log("Location:", location);
+
   alert()
   /*
 Des messages d'erreur spécifiques doivent apparaître sous l'entrée qui n'est pas correcte. Les messages d'erreur doivent s'afficher sous le champ de saisie associé. Exemples :
