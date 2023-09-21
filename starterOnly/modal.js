@@ -12,12 +12,13 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBg = document.querySelector(".close");
+const closeBgMod = document.querySelector(".thxBtnStyle");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // close modal event
 closeBg.addEventListener("click", closeModal);
-
+closeBgMod.addEventListener("click", closeModal);
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
@@ -30,7 +31,7 @@ function closeModal() {
 }
 
 // onsubmit="return validate();" demande l'appel de la fonction validate pour valider les donnée
-function validate(){
+function validate(event){
 /*- document, un objet javascript qui permet d'atteindre la page html
   charger dans un navigateur web.
   - forms séléctionne tout les élément <form> de la page
@@ -43,22 +44,35 @@ function validate(){
   const birthdate = document.forms.reserve.birthdate.value;
   const quantity = document.forms.reserve.quantity.value;
   const location = document.forms.reserve.location.value;
+  const checkbox1 = document.getElementById("checkbox1");
+  let i = 0;
 
-  // Log the data sent by the form
-  console.log("First Name:", firstName);
-  console.log("Last Name:", lastName);
-  console.log("Email:", email);
-  console.log("Birthdate:", birthdate);
-  console.log("Quantity:", quantity);
-  console.log("Location:", location);
+  if (lastName == "" || lastName.length < 2) {
+    document.querySelector('#lastError').style.display = 'block';
+    i++;
+  }
+   if (birthdate == "")
+  {
+    document.querySelector('#birthError').style.display = 'block';
+    i++;
+  }
+ if (location == "")
+  {
+    document.querySelector('#locError').style.display = 'block';
+    i++;
+  }
+ if (checkbox1.checked === false)
+{
+  document.querySelector('#coError').style.display = 'block';
+  i++;
+}
 
-  alert()
-  /*
-Des messages d'erreur spécifiques doivent apparaître sous l'entrée qui n'est pas correcte. Les messages d'erreur doivent s'afficher sous le champ de saisie associé. Exemples :
+  if(i > 0)
 
-"Veuillez entrer 2 caractères ou plus pour le champ du nom."
-"Vous devez choisir une option."
-"Vous devez vérifier que vous acceptez les termes et conditions."
-"Vous devez entrer votre date de naissance."
-  */
+  event.preventDefault();
+else{
+  event.preventDefault();
+    document.querySelector('.thxStyle').style.display = 'block';
+  document.querySelector('form').style.display = 'none';
+}
 }
