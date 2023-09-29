@@ -82,7 +82,7 @@
                   type="text"
                   id="last"
                   name="last"
-                /><br><p id="lastError" class="error">Veuillez entrer 2 caractères ou plus pour le champ du nom.</p>
+                /><br>
               </div>
               <div
                 class="formData">
@@ -103,16 +103,16 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                /><br><p id="birthError" class="error">Vous devez entrer votre date de naissance.</p>
+                /><br>
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" value="0">
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData" id="location">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -180,7 +180,6 @@
                   Portland</label
                 >
               </div>
-              <p id="locError" class="error">Vous devez choisir une option.</p>
               <div
                 class="formData">
                 <input
@@ -189,11 +188,11 @@
                   id="checkbox1"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1">
+                <label id="errLab" class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <br><p id="coError" class="error">Vous devez vérifier que vous acceptez les termes et conditions.</p>
+                <br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>

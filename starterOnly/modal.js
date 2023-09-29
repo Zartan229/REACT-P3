@@ -24,55 +24,96 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// Fonction closeModal, copie de launchModal mais la différence est que elle 
+// Fonction closeModal, copie de launchModal mais la différence est que elle
 // rend en le display : block de la classe .bground en display : none
 function closeModal() {
   modalbg.style.display = "none";
 }
 
 // onsubmit="return validate();" demande l'appel de la fonction validate pour valider les donnée
-function validate(event){
-/*- document, un objet javascript qui permet d'atteindre la page html
+function validate(event) {
+  /*- document, un objet javascript qui permet d'atteindre la page html
   charger dans un navigateur web.
   - forms séléctionne tout les élément <form> de la page
   - reserve séléctionne le formulaire nommer reserve,
   qui est celui sur lequel on souhaite travailler.
-*/  
+*/
   const firstName = document.forms.reserve.first.value;
   const lastName = document.forms.reserve.last.value;
   const email = document.forms.reserve.email.value;
   const birthdate = document.forms.reserve.birthdate.value;
-  const quantity = document.forms.reserve.quantity.value;
-  const location = document.forms.reserve.location.value;
+  let quantity = document.forms.reserve.quantity.value;
   const checkbox1 = document.getElementById("checkbox1");
-  let i = 0;
+  const locationRadios = document.getElementsByName("location");
+  const regExEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,10})+$/;
+  let valide = true;
 
+  if (firstName == "" || firstName.length < 2) {
+    valide = false;
+  }
   if (lastName == "" || lastName.length < 2) {
-    document.querySelector('#lastError').style.display = 'block';
-    i++;
-  }
-   if (birthdate == "")
-  {
-    document.querySelector('#birthError').style.display = 'block';
-    i++;
-  }
- if (location == "")
-  {
-    document.querySelector('#locError').style.display = 'block';
-    i++;
-  }
- if (checkbox1.checked === false)
-{
-  document.querySelector('#coError').style.display = 'block';
-  i++;
-}
+    const input = document.getElementById("last");
 
-  if(i > 0)
+    const errorParagraph = document.createElement("p");
+    errorParagraph.className = "error";
+    errorParagraph.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
 
-  event.preventDefault();
-else{
-  event.preventDefault();
-    document.querySelector('.thxStyle').style.display = 'block';
-  document.querySelector('form').style.display = 'none';
-}
+    input.insertAdjacentElement("afterend", errorParagraph);
+
+    valide = false;
+  }
+  if (birthdate == "") {
+    const input = document.getElementById("birthdate");
+
+    const errorParagraph = document.createElement("p");
+    errorParagraph.className = "error";
+    errorParagraph.textContent = "Vous devez entrer votre date de naissance.";
+
+    input.insertAdjacentElement("afterend", errorParagraph);
+    valide = false;
+  }
+  if (!email.match(regExEmail)) {
+    valide = false;
+  }
+
+  let locMessage = false;
+
+  for (const radio of locationRadios) {
+    if (radio.checked) {
+      locMessage = true; 
+    }
+  }
+
+  if (!locMessage) {
+    const input = document.getElementById("location");
+
+    const errorParagraph = document.createElement("p");
+    errorParagraph.className = "error";
+    errorParagraph.textContent = "Vous devez choisir une option.";
+
+    input.insertAdjacentElement("afterend", errorParagraph);
+    event.preventDefault();
+  }
+  if(quantity == "")
+  {
+    quantity = 0; //erreur aussi
+  }
+  if (checkbox1.checked === false) {
+    const input = document.getElementById("errLab");
+
+    const errorParagraph = document.createElement("p");
+    errorParagraph.className = "error";
+    errorParagraph.textContent = "Vous devez vérifier que vous acceptez les termes et conditions.";
+
+    input.insertAdjacentElement("afterend", errorParagraph);
+    valide = false;
+  }
+
+  if (!valide) {
+    event.preventDefault();
+  } else {
+    event.preventDefault();
+    document.querySelector(".thxStyle").style.display = "block";
+    document.querySelector("form").style.display = "none";
+  }
 }

@@ -536,18 +536,6 @@ footer {
 }
 
 /* CSS AJOUTER */
-#lastError{
-  display: none;
-}
-#birthError{
-  display: none;
-}
-#locError{
-  display: none;
-}
-#coError{
-  display: none;
-}
 .error{
   color: #FF4E60;
   font-family: Roboto;
