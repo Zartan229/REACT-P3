@@ -18,7 +18,7 @@ const closeBgMod = document.querySelector(".thxBtnStyle");
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // close modal event
 closeBg.addEventListener("click", closeModal);
-closeBgMod.addEventListener("click", closeModal);
+closeBgMod.addEventListener("click", closeModal); // Séléctionne le bouton et ferme le background sur lequel est construit les remerciement.
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
@@ -49,6 +49,14 @@ function validate(event) {
   let valide = true;
 
   if (firstName == "" || firstName.length < 2) {
+    const input = document.getElementById("first");
+
+    const errorParagraph = document.createElement("p");
+    errorParagraph.className = "error";
+    errorParagraph.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
+
+    input.insertAdjacentElement("afterend", errorParagraph);
+
     valide = false;
   }
   if (lastName == "" || lastName.length < 2) {
@@ -92,11 +100,19 @@ function validate(event) {
     errorParagraph.textContent = "Vous devez choisir une option.";
 
     input.insertAdjacentElement("afterend", errorParagraph);
-    event.preventDefault();
+    valide = false;
   }
   if(quantity == "")
   {
-    quantity = 0; //erreur aussi
+    const input = document.getElementById("quantity");
+
+    const errorParagraph = document.createElement("p");
+    errorParagraph.className = "error";
+    errorParagraph.textContent = "Veuillez entrer un chiffre entre 0 et 99.";
+
+    input.insertAdjacentElement("afterend", errorParagraph);
+
+    valide = false;
   }
   if (checkbox1.checked === false) {
     const input = document.getElementById("errLab");
