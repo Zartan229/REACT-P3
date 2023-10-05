@@ -11,19 +11,21 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+ // Récupère la classe close dans la page
 const closeBg = document.querySelector(".close");
+// Récupère la classe thxBtnStyle dans la page
 const closeBgMod = document.querySelector(".thxBtnStyle");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // close modal event
 closeBg.addEventListener("click", closeModal);
-closeBgMod.addEventListener("click", closeModal); // Séléctionne le bouton et ferme le background sur lequel est construit les remerciement.
+// Séléctionne le bouton et ferme le background sur lequel est construit les remerciement.
+closeBgMod.addEventListener("click", closeModal);
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
-
 // Fonction closeModal, copie de launchModal mais la différence est que elle
 // rend en le display : block de la classe .bground en display : none
 function closeModal() {
