@@ -53,46 +53,80 @@ function validate(event) {
   if (firstName == "" || firstName.length < 2) {
     const input = document.getElementById("first");
 
+    const errorParagraph = document.getElementById("errFirst");
+    if(!errorParagraph){ // Si errorParagraph n'existe pas, créer la balise dans la page
     const errorParagraph = document.createElement("p");
     errorParagraph.className = "error";
+    errorParagraph.id = "errFirst" // Créer un ID pour chaque erreur
     errorParagraph.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
 
     input.insertAdjacentElement("afterend", errorParagraph);
-
+    }
     valide = false;
+  } else {
+    const errorParagraph = document.getElementById("errFirst"); 
+  
+    if (errorParagraph) { // Si error paragraph existe et n'est pas invalide, vide le texte de l'érreur.
+      errorParagraph.textContent = "";
+    }
   }
   if (lastName == "" || lastName.length < 2) {
     const input = document.getElementById("last");
-
+    const errorParagraph = document.getElementById("errLast");
+    if(!errorParagraph){
     const errorParagraph = document.createElement("p");
     errorParagraph.className = "error";
+    errorParagraph.id = "errLast"
     errorParagraph.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
 
     input.insertAdjacentElement("afterend", errorParagraph);
-
+    }
     valide = false;
+  }else {
+    const errorParagraph = document.getElementById("errLast");
+  
+    if (errorParagraph) {
+      errorParagraph.textContent = "";
+    }
   }
   if (birthdate == "") {
     const input = document.getElementById("birthdate");
-
+    const errorParagraph = document.getElementById("errBirth");
+    if(!errorParagraph){
     const errorParagraph = document.createElement("p");
     errorParagraph.className = "error";
+    errorParagraph.id = "errBirth"
     errorParagraph.textContent = "Vous devez entrer votre date de naissance.";
 
     input.insertAdjacentElement("afterend", errorParagraph);
+    }
     valide = false;
+  }else {
+    const errorParagraph = document.getElementById("errBirth");
+  
+    if (errorParagraph) {
+      errorParagraph.textContent = "";
+    }
   }
   if (!email.match(regExEmail)) {
-    /*
-    const input = document.getElementById("email");
 
+    const input = document.getElementById("email");
+    const errorParagraph = document.getElementById("errEmail");
+    if(!errorParagraph){
     const errorParagraph = document.createElement("p");
     errorParagraph.className = "error";
+    errorParagraph.id = "errEmail"
     errorParagraph.textContent = "Vous devez entrer un email valide.";
 
     input.insertAdjacentElement("afterend", errorParagraph);
-    */
+    }
     valide = false;
+  }else {
+    const errorParagraph = document.getElementById("errEmail"); 
+  
+    if (errorParagraph) {
+      errorParagraph.textContent = ""; 
+    }
   }
 
   let locMessage = false;
@@ -105,35 +139,62 @@ function validate(event) {
 
   if (!locMessage) {
     const input = document.getElementById("location");
-
+    const errorParagraph = document.getElementById("errLoc");
+    if(!errorParagraph){
     const errorParagraph = document.createElement("p");
     errorParagraph.className = "error";
+    errorParagraph.id = "errLoc"
     errorParagraph.textContent = "Vous devez choisir une option.";
 
     input.insertAdjacentElement("afterend", errorParagraph);
+    }
     valide = false;
+  }else {
+    const errorParagraph = document.getElementById("errLoc");
+  
+    if (errorParagraph) {
+      errorParagraph.textContent = "";
+    }
   }
   if(quantity == "")
   {
     const input = document.getElementById("quantity");
-
+    const errorParagraph = document.getElementById("errQua");
+    if(!errorParagraph){
     const errorParagraph = document.createElement("p");
     errorParagraph.className = "error";
+    errorParagraph.id = "errQua"
     errorParagraph.textContent = "Veuillez entrer un chiffre entre 0 et 99.";
 
     input.insertAdjacentElement("afterend", errorParagraph);
-
+    }
     valide = false;
+  }else {
+    const errorParagraph = document.getElementById("errQua");
+  
+    if (errorParagraph) {
+      errorParagraph.textContent = ""; 
+    }
   }
   if (checkbox1.checked === false) {
     const input = document.getElementById("errLab");
-
+    const errorParagraph = document.getElementById("errChe");
+    if(!errorParagraph){
     const errorParagraph = document.createElement("p");
     errorParagraph.className = "error";
+    errorParagraph.id = "errChe"
     errorParagraph.textContent = "Vous devez vérifier que vous acceptez les termes et conditions.";
 
     input.insertAdjacentElement("afterend", errorParagraph);
+    }
     valide = false;
+  }else {
+    const errorParagraph = document.getElementById("errChe"); 
+  
+    if (errorParagraph) { 
+      errorParagraph.textContent = "";
+
+    }
   }
 
   if (!valide) {
