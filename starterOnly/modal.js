@@ -83,6 +83,15 @@ function validate(event) {
     valide = false;
   }
   if (!email.match(regExEmail)) {
+    /*
+    const input = document.getElementById("email");
+
+    const errorParagraph = document.createElement("p");
+    errorParagraph.className = "error";
+    errorParagraph.textContent = "Vous devez entrer un email valide.";
+
+    input.insertAdjacentElement("afterend", errorParagraph);
+    */
     valide = false;
   }
 
